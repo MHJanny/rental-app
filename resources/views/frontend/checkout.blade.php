@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from html.vecurosoft.com/travolo/demo/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Feb 2024 01:47:57 GMT -->
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -92,7 +93,7 @@
                   <li><a href="destinations.html">Destinations</a></li>
                   <li><a href="destination-details.html">Destinations Details</a></li>
                   <li><a href="tours.html">Tours List</a></li>
-                  <li><a href="tour-booking.html">Tour Booking</a></li>
+                  <li><a href="/rentals/1">Tour Booking</a></li>
                 </ul>
               </li>
               <li>
@@ -121,7 +122,7 @@
             <a href="#">Tours</a>
             <ul class="sub-menu">
               <li><a href="tours.html">Tours List</a></li>
-              <li><a href="tour-booking.html">Tour Booking</a></li>
+              <li><a href="/rentals/1">Tour Booking</a></li>
             </ul>
           </li>
           <li class="menu-item-has-children">
@@ -236,15 +237,13 @@
         <div class="widget_shopping_cart_content">
           <ul class="cart_list">
             <li class="mini_cart_item">
-              <a href="shop.html" class="remove"><i class="fal fa-trash-alt"></i></a> <a href="shop.html"><img
-                  src="assets/img/products/p-1-1.png" alt="Cart Image" />Modern Cow Boy Hat</a>
+              <a href="shop.html" class="remove"><i class="fal fa-trash-alt"></i></a> <a href="shop.html"><img src="assets/img/products/p-1-1.png" alt="Cart Image" />Modern Cow Boy Hat</a>
               <span class="quantity">
                 1 × <span class="amount"><span>$</span>100.00</span>
               </span>
             </li>
             <li class="mini_cart_item">
-              <a href="shop.html" class="remove"><i class="fal fa-trash-alt"></i></a> <a href="shop.html"><img
-                  src="assets/img/products/p-1-2.png" alt="Cart Image" />Cat Eye Sunglasses</a>
+              <a href="shop.html" class="remove"><i class="fal fa-trash-alt"></i></a> <a href="shop.html"><img src="assets/img/products/p-1-2.png" alt="Cart Image" />Cat Eye Sunglasses</a>
               <span class="quantity">
                 1 × <span class="amount"><span>$</span>10.00</span>
               </span>
@@ -297,8 +296,7 @@
           </div>
           <div class="col-auto d-flex ">
             <div class="header-dropdown">
-              <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown"
-                aria-expanded="false">English</a>
+              <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">English</a>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
                 <li>
                   <a href="#">German</a>
@@ -361,7 +359,7 @@
                           <li><a href="destinations.html">Destinations</a></li>
                           <li><a href="destination-details.html">Destinations Details</a></li>
                           <li><a href="tours.html">Tours List</a></li>
-                          <li><a href="tour-booking.html">Tour Booking</a></li>
+                          <li><a href="/rentals/1">Tour Booking</a></li>
                         </ul>
                       </li>
                       <li>
@@ -389,7 +387,7 @@
                     <a href="#">Tours</a>
                     <ul class="sub-menu">
                       <li><a href="tours.html">Tours List</a></li>
-                      <li><a href="tour-booking.html">Tour Booking</a></li>
+                      <li><a href="/rentals/1">Tour Booking</a></li>
                     </ul>
                   </li>
                   <li class="menu-item-has-children">
@@ -419,8 +417,7 @@
             <div class="col-auto d-none d-xl-block">
               <div class="header-btns">
                 <button class="searchBoxTggler"><i class="fal fa-search"></i></button>
-                <button class="sideCartToggler"><i class="fal fa-shopping-bag"></i><span
-                    class="button-badge">2</span></button>
+                <button class="sideCartToggler"><i class="fal fa-shopping-bag"></i><span class="button-badge">2</span></button>
                 <button class="sideMenuToggler"><i class="fal fa-bars"></i></button>
               </div>
             </div>
@@ -596,8 +593,7 @@
               </div>
             </div>
             <div class="col-12 form-group">
-              <textarea cols="20" rows="5" class="form-control"
-                placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+              <textarea cols="20" rows="5" class="form-control" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
             </div>
           </div>
         </div>
@@ -618,8 +614,7 @@
             <tbody>
               <tr class="cart_item">
                 <td data-title="Product">
-                  <a class="cart-productimage" href="shop-details.html"><img width="91" height="91"
-                      src="assets/img/products/pd-thumb-1.png" alt="Image"></a>
+                  <a class="cart-productimage" href="shop-details.html"><img width="91" height="91" src="assets/img/products/pd-thumb-1.png" alt="Image"></a>
                 </td>
                 <td data-title="Name">
                   <a class="cart-productname" href="shop-details.html">Fujifilm Instax Mini Camera...</a>
@@ -638,8 +633,7 @@
             <tfoot class="checkout-ordertable">
               <tr class="cart-subtotal">
                 <th>Subtotal</th>
-                <td data-title="Subtotal" colspan="4"><span class="woocommerce-Price-amount amount"><bdi><span
-                        class="woocommerce-Price-currencySymbol">$</span>760</bdi></span></td>
+                <td data-title="Subtotal" colspan="4"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>760</bdi></span></td>
               </tr>
               <tr class="woocommerce-shipping-totals shipping">
                 <th>Shipping</th>
@@ -649,8 +643,7 @@
               </tr>
               <tr class="order-total">
                 <th>Total</th>
-                <td data-title="Total" colspan="4"><strong><span class="woocommerce-Price-amount amount"><bdi><span
-                          class="woocommerce-Price-currencySymbol">$</span>760</bdi></span></strong>
+                <td data-title="Total" colspan="4"><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>760</bdi></span></strong>
                 </td>
               </tr>
             </tfoot>
@@ -661,8 +654,7 @@
         <div class="woocommerce-checkout-payment">
           <ul class="wc_payment_methods payment_methods methods">
             <li class="wc_payment_method payment_method_bacs">
-              <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="bacs"
-                checked="checked">
+              <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="bacs" checked="checked">
               <label for="payment_method_bacs">Direct bank transfer</label>
               <div class="payment_box payment_method_bacs" style="display: block;">
                 <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference.
@@ -731,8 +723,7 @@
             <div class="widget footer-widget">
               <div class="vs-widget-about">
                 <div>
-                  <a class="footer-logo" href="index.html"><img src="assets/img/white-logo.svg" alt="Travolo"
-                      class="logo" /></a>
+                  <a class="footer-logo" href="index.html"><img src="assets/img/white-logo.svg" alt="Travolo" class="logo" /></a>
                 </div>
                 <p class="footer-text">
                   Curabitur aliquet quam id dui bandit posuere blandit.
@@ -800,7 +791,10 @@
         <div class="row justify-content-between align-items-center">
           <div class="col-lg-auto">
             <p class="copyright-text">
-              Copyright <i class="fal fa-copyright"></i> <script>document.write(new Date().getFullYear())</script>
+              Copyright <i class="fal fa-copyright"></i>
+              <script>
+                document.write(new Date().getFullYear())
+              </script>
               <a href="index.html">Travolo</a>. All Rights Reserved By
               <a href="https://themeforest.net/user/vecuro">Vecuro</a>
             </p>
@@ -851,4 +845,5 @@
 
 
 <!-- Mirrored from html.vecurosoft.com/travolo/demo/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Feb 2024 01:47:57 GMT -->
+
 </html>

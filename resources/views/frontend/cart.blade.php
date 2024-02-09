@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from html.vecurosoft.com/travolo/demo/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Feb 2024 01:47:57 GMT -->
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -92,7 +93,7 @@
                   <li><a href="destinations.html">Destinations</a></li>
                   <li><a href="destination-details.html">Destinations Details</a></li>
                   <li><a href="tours.html">Tours List</a></li>
-                  <li><a href="tour-booking.html">Tour Booking</a></li>
+                  <li><a href="/rentals/1">Tour Booking</a></li>
                 </ul>
               </li>
               <li>
@@ -121,7 +122,7 @@
             <a href="#">Tours</a>
             <ul class="sub-menu">
               <li><a href="tours.html">Tours List</a></li>
-              <li><a href="tour-booking.html">Tour Booking</a></li>
+              <li><a href="/rentals/1">Tour Booking</a></li>
             </ul>
           </li>
           <li class="menu-item-has-children">
@@ -236,15 +237,13 @@
         <div class="widget_shopping_cart_content">
           <ul class="cart_list">
             <li class="mini_cart_item">
-              <a href="shop.html" class="remove"><i class="fal fa-trash-alt"></i></a> <a href="shop.html"><img
-                  src="assets/img/products/p-1-1.png" alt="Cart Image" />Modern Cow Boy Hat</a>
+              <a href="shop.html" class="remove"><i class="fal fa-trash-alt"></i></a> <a href="shop.html"><img src="assets/img/products/p-1-1.png" alt="Cart Image" />Modern Cow Boy Hat</a>
               <span class="quantity">
                 1 × <span class="amount"><span>$</span>100.00</span>
               </span>
             </li>
             <li class="mini_cart_item">
-              <a href="shop.html" class="remove"><i class="fal fa-trash-alt"></i></a> <a href="shop.html"><img
-                  src="assets/img/products/p-1-2.png" alt="Cart Image" />Cat Eye Sunglasses</a>
+              <a href="shop.html" class="remove"><i class="fal fa-trash-alt"></i></a> <a href="shop.html"><img src="assets/img/products/p-1-2.png" alt="Cart Image" />Cat Eye Sunglasses</a>
               <span class="quantity">
                 1 × <span class="amount"><span>$</span>10.00</span>
               </span>
@@ -297,8 +296,7 @@
           </div>
           <div class="col-auto d-flex ">
             <div class="header-dropdown">
-              <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown"
-                aria-expanded="false">English</a>
+              <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">English</a>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
                 <li>
                   <a href="#">German</a>
@@ -361,7 +359,7 @@
                           <li><a href="destinations.html">Destinations</a></li>
                           <li><a href="destination-details.html">Destinations Details</a></li>
                           <li><a href="tours.html">Tours List</a></li>
-                          <li><a href="tour-booking.html">Tour Booking</a></li>
+                          <li><a href="/rentals/1">Tour Booking</a></li>
                         </ul>
                       </li>
                       <li>
@@ -389,7 +387,7 @@
                     <a href="#">Tours</a>
                     <ul class="sub-menu">
                       <li><a href="tours.html">Tours List</a></li>
-                      <li><a href="tour-booking.html">Tour Booking</a></li>
+                      <li><a href="/rentals/1">Tour Booking</a></li>
                     </ul>
                   </li>
                   <li class="menu-item-has-children">
@@ -419,8 +417,7 @@
             <div class="col-auto d-none d-xl-block">
               <div class="header-btns">
                 <button class="searchBoxTggler"><i class="fal fa-search"></i></button>
-                <button class="sideCartToggler"><i class="fal fa-shopping-bag"></i><span
-                    class="button-badge">2</span></button>
+                <button class="sideCartToggler"><i class="fal fa-shopping-bag"></i><span class="button-badge">2</span></button>
                 <button class="sideMenuToggler"><i class="fal fa-bars"></i></button>
               </div>
             </div>
@@ -478,8 +475,7 @@
             <tbody>
               <tr class="cart_item">
                 <td data-title="Product">
-                  <a class="cart-productimage" href="shop-details.html"><img width="80" height="80"
-                      src="assets/img/products/p-1-1.png" alt="Image" /></a>
+                  <a class="cart-productimage" href="shop-details.html"><img width="80" height="80" src="assets/img/products/p-1-1.png" alt="Image" /></a>
                 </td>
                 <td data-title="Name">
                   <a class="cart-productname" href="shop-details.html">Modern Cow Boy Hat</a>
@@ -507,8 +503,7 @@
               </tr>
               <tr class="cart_item">
                 <td data-title="Product">
-                  <a class="cart-productimage" href="shop-details.html"><img width="80" height="80"
-                      src="assets/img/products/p-1-2.png" alt="Image" /></a>
+                  <a class="cart-productimage" href="shop-details.html"><img width="80" height="80" src="assets/img/products/p-1-2.png" alt="Image" /></a>
                 </td>
                 <td data-title="Name">
                   <a class="cart-productname" href="shop-details.html">Cat Eye Sunglasses</a>
@@ -572,8 +567,7 @@
                       <label for="free_shipping">Free shipping</label>
                     </li>
                     <li>
-                      <input type="radio" id="flat_rate" name="shipping_method" class="shipping_method"
-                        checked="checked">
+                      <input type="radio" id="flat_rate" name="shipping_method" class="shipping_method" checked="checked">
                       <label for="flat_rate">Flat rate</label>
                     </li>
                   </ul>
@@ -666,8 +660,7 @@
             <div class="widget footer-widget">
               <div class="vs-widget-about">
                 <div>
-                  <a class="footer-logo" href="index.html"><img src="assets/img/white-logo.svg" alt="Travolo"
-                      class="logo" /></a>
+                  <a class="footer-logo" href="index.html"><img src="assets/img/white-logo.svg" alt="Travolo" class="logo" /></a>
                 </div>
                 <p class="footer-text">
                   Curabitur aliquet quam id dui bandit posuere blandit.
@@ -700,23 +693,17 @@
             <div class="widget footer-widget">
               <h4 class="widget_title">Our Instagram</h4>
               <div class="sidebar-gallery">
-                <a href="assets/img/footer/insta1.jpg" class="popup-image"><img src="assets/img/footer/insta1.jpg"
-                    alt="Gallery Image" class="w-100" />
+                <a href="assets/img/footer/insta1.jpg" class="popup-image"><img src="assets/img/footer/insta1.jpg" alt="Gallery Image" class="w-100" />
                 </a>
-                <a href="assets/img/footer/insta2.jpg" class="popup-image"><img src="assets/img/footer/insta2.jpg"
-                    alt="Gallery Image" class="w-100" />
+                <a href="assets/img/footer/insta2.jpg" class="popup-image"><img src="assets/img/footer/insta2.jpg" alt="Gallery Image" class="w-100" />
                 </a>
-                <a href="assets/img/footer/insta3.jpg" class="popup-image"><img src="assets/img/footer/insta3.jpg"
-                    alt="Gallery Image" class="w-100" />
+                <a href="assets/img/footer/insta3.jpg" class="popup-image"><img src="assets/img/footer/insta3.jpg" alt="Gallery Image" class="w-100" />
                 </a>
-                <a href="assets/img/footer/insta4.jpg" class="popup-image"><img src="assets/img/footer/insta4.jpg"
-                    alt="Gallery Image" class="w-100" />
+                <a href="assets/img/footer/insta4.jpg" class="popup-image"><img src="assets/img/footer/insta4.jpg" alt="Gallery Image" class="w-100" />
                 </a>
-                <a href="assets/img/footer/insta5.jpg" class="popup-image"><img src="assets/img/footer/insta5.jpg"
-                    alt="Gallery Image" class="w-100" />
+                <a href="assets/img/footer/insta5.jpg" class="popup-image"><img src="assets/img/footer/insta5.jpg" alt="Gallery Image" class="w-100" />
                 </a>
-                <a href="assets/img/footer/insta6.jpg" class="popup-image"><img src="assets/img/footer/insta6.jpg"
-                    alt="Gallery Image" class="w-100" />
+                <a href="assets/img/footer/insta6.jpg" class="popup-image"><img src="assets/img/footer/insta6.jpg" alt="Gallery Image" class="w-100" />
                 </a>
               </div>
             </div>
@@ -741,7 +728,10 @@
         <div class="row justify-content-between align-items-center">
           <div class="col-lg-auto">
             <p class="copyright-text">
-              Copyright <i class="fal fa-copyright"></i> <script>document.write(new Date().getFullYear())</script>
+              Copyright <i class="fal fa-copyright"></i>
+              <script>
+                document.write(new Date().getFullYear())
+              </script>
               <a href="index.html">Travolo</a>. All Rights Reserved By
               <a href="https://themeforest.net/user/vecuro">Vecuro</a>
             </p>
@@ -792,4 +782,5 @@
 
 
 <!-- Mirrored from html.vecurosoft.com/travolo/demo/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Feb 2024 01:47:57 GMT -->
+
 </html>
