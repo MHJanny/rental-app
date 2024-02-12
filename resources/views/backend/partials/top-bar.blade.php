@@ -402,12 +402,15 @@
                 </li>
                 <li><hr class="dropdown-divider"></li>
                 <li>
-                  <a class="dropdown-item" href="authentication-signup-with-header-footer.html">
+                
                      <div class="d-flex align-items-center">
                        <div class=""><i class="bi bi-lock-fill"></i></div>
-                       <div class="ms-3"><span>Logout</span></div>
+                      <form action="/logout" method="post">
+                        @csrf
+                          <button type="submit" class="btn btn-warning">Logout</button>
+                      </form>
                      </div>
-                   </a>
+                 
                 </li>
             </ul>
           </li>

@@ -27,7 +27,7 @@ Route::get('/rentals/{id}', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('backend.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
