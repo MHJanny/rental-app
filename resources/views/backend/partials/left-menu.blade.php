@@ -20,12 +20,17 @@
             <div class="menu-title">Rentals</div>
           </a>
           <ul>
-            <li> <a href="add-rental.html"><i class="bi bi-circle"></i>Add Rental</a>
+            <li> <a href="{{route('property.create')}}"><i class="bi bi-circle"></i>Add Rental</a>
             </li>
             <li> <a href="rentals.html"><i class="bi bi-circle"></i>All Rentals</a>
             </li>
-            <li> <a href="rent-category.html"><i class="bi bi-circle"></i>Renatal Type</a>
+
+  
+          @can('add-category')
+            <li> 
+              <a href="{{route('category.create')}}"><i class="bi bi-circle"></i>Renatal Type</a>
             </li>
+          @endcan
           </ul>
         </li>
      @endcan

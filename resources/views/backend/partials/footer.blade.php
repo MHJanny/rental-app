@@ -1,5 +1,5 @@
   <!-- Bootstrap bundle JS -->
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="{{asset('backend/assets/js/bootstrap.bundle.min.js')}}"></script>
   <!--plugins-->
   <script src="{{asset('backend/assets/js/jquery.min.js')}}"></script>
   <script src="{{asset('backend/assets/plugins/simplebar/js/simplebar.min.js')}}"></script>
@@ -15,7 +15,7 @@
   <!--app-->
   <script src="{{asset('backend/assets/js/app.js')}}"></script>
   <script src="{{asset('backend/assets/js/index.js')}}"></script>
-
+  @stack('extra-js')
 
 </body>
 </html>
