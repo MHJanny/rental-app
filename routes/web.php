@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Property\CategoryController;
-use App\Http\Controllers\Property\RentController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Property\PropertyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,17 +33,19 @@ Route::get('/dashboard', function () {
     return view('backend.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::post('/upload', [UploadController::class,'store']);
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('add-category',[CategoryController::class, 'create'])->name('category.create');
     Route::post('add-category',[CategoryController::class, 'store'])->name('category.store');
     Route::get('edit-category/{id}', [CategoryController::class, 'edit'])->name('category.edit');
     Route::patch('edit-category/{id}', [CategoryController::class, 'update'])->name('category.update');
     Route::post('delete-category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
-
-
-    Route::get('add-property', [RentController::class, 'create'])->name('property.create');
 });
 
+Route::middleware(['auth'])->prefix('dashboard')->group(function () {
+    Route::get('add-property', [PropertyController::class, 'create'])->name('property.create');
+    Route::post('add-property', [PropertyController::class,'store'])->name('property.store');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
