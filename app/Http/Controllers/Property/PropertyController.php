@@ -13,13 +13,16 @@ class PropertyController extends Controller
 {
     public function create()
     {
+        $this->authorize('create', Property::class);
         $categories = Category::whereNull('deleted_at')->get();
         return view('backend.property.add-rental',['categories' => $categories]);
     }
     
     public function store(PropertyRequest $request)
     {
+        $this->authorize('create', Property::class);
         $data = $request->validated(); 
+        $data['user_id'] = auth()->user()->id;
         if ($request->hasFile('image')) {
             $property = Property::create($data);
             $property->addMedia($request->file('image'))->toMediaCollection('property-images');

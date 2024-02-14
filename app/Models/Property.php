@@ -12,7 +12,7 @@ class Property extends Model implements HasMedia
     use HasFactory,InteractsWithMedia;
 
     protected $fillable = ['title','slug','description',
-                            'category_id','address',
+                            'category_id','user_id','address',
                             'start_date','end_date', 'gallery_id',
                             'price','status'];
 
@@ -20,7 +20,8 @@ class Property extends Model implements HasMedia
         'gallery_id' => 'array',
         'price' => 'float',
         'start_date' => 'date',
-        'end_date' => 'date'
+        'end_date' => 'date',
+        'user_id' => 'integer',
     ];
     public function registerMediaCollections(): void
     {
@@ -32,5 +33,9 @@ class Property extends Model implements HasMedia
         static::creating(function ($property) {
             $property->slug = Str::slug($property->title);
         });
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

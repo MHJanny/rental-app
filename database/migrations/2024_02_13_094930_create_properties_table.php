@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('slug');
             $table->text('description');
             $table->integer('category_id');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('address');
             $table->string('start_date');
             $table->string('end_date');
