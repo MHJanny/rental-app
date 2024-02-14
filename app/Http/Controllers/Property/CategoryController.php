@@ -6,13 +6,14 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
+use Hamcrest\Core\IsNot;
 
 class CategoryController extends Controller
 {
     public function create()
     {
         $this->authorize('view', Category::class);
-        $categories = Category::all();
+        $categories = Category::whereNull('deleted_at')->get();
         return view('backend.category.rent-category',['categories' => $categories]);
     }
     public function store(CategoryRequest $request)
