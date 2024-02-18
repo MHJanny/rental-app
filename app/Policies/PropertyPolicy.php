@@ -38,7 +38,7 @@ class PropertyPolicy
      */
     public function update(User $user, Property $property): bool
     {
-        return $user->role === Role::ADMINISTRATOR || $user->role === Role::RENTOWNER;
+        return $user->role === Role::ADMINISTRATOR || $user->id === $property->user_id;
     }
 
     /**
@@ -46,7 +46,7 @@ class PropertyPolicy
      */
     public function delete(User $user, Property $property): bool
     {
-        return $user->role === Role::ADMINISTRATOR || $user->role === Role::RENTOWNER;
+        return $user->role === Role::ADMINISTRATOR || $user->id === $property->user_id;
     }
 
     /**

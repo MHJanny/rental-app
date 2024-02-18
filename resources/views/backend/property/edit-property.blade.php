@@ -30,12 +30,15 @@
                           @session('property-success')
                             <span class="text-success">{{$value}}</span>
                           @endsession
-                          <form id="my-dropzone" class="row g-3 dropzone" action="{{ route('property.store') }}" method="POST" enctype="multipart/form-data">
+                        
+                          <form id="my-dropzone" class="row g-3 dropzone" action="{{route('property.update', 
+                          ['uuid' => $property->uuid])}}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('patch')
                           <div class="col-12">
                               <label class="form-label">Title</label>
                               <span class="text-danger">*</span>
-                              <input type="text" name="title" value="{{old('title')}}" class="form-control">
+                              <input type="text" name="title" value="{{$property->title}}" class="form-control">
                           </div>
                           @error('title')
                             <span class="alert alert-danger">{{$message}}</span>
@@ -43,7 +46,7 @@
                           <div class="col-12">
                             <label class="form-label">Description</label>
                             <span class="text-danger">*</span>
-                            <textarea class="form-control" name="description" id="" cols="30" rows="10">{{old('description')}}</textarea>
+                            <textarea class="form-control" name="description" id="" cols="30" rows="10">{{$property->description}}</textarea>
                         </div>
                         @error('description')
                             <span class="alert alert-danger">{{$message}}</span>
@@ -52,7 +55,7 @@
                               <label class="form-label">Rent Type</label>
                               <span class="text-danger">*</span>
                               <select name="category_id" class="form-select mb-3" aria-label="Default select example">
-                                    <option selected>Select Type</option>
+                                    <option value="{{$property->category->id}}" selected>{{$property->category->title}}</option>
                                       @foreach ($categories as $category)
                                         <option value="{{$category->id}}">{{$category->title}}</option>
                                       @endforeach
@@ -64,7 +67,7 @@
                           <div class="col-12">
                             <label class="form-label">Address</label>
                             <span class="text-danger">*</span>
-                            <input type="text" name="address" class="form-control">
+                            <input type="text" value="{{$property->address}}" name="address" class="form-control">
                         </div>
                         @error('address')
                             <span class="alert alert-danger">{{$message}}</span>
@@ -72,47 +75,57 @@
                         <div class="col-12">
                           <label class="form-label">Feature Image</label>
                           <span class="text-danger">*</span>
+                          <div class="text-center py-2"> 
+                            <img id="image-preview" height="300" width="300" 
+                            src="{{ $property->media[0]->getUrl() }}" alt="{{$property->media[0]->file_name}}">
+                          </div>
                           <input type="file" id="avatar" name="image" class="form-control file-pond">
                       </div>
-                      @error('avatar')
+                      @error('image')
                         <span class="alert alert-danger">{{$message}}</span>
                       @enderror
                       <div class="col-12">
                         <label class="form-label">Start Date</label>
-                        <input type="date" name="start_date" class="form-control">
+                        <input type="date" name="start_date" value="{{ $property->start_date->format('Y-m-d') }}" class="form-control">
                     </div>
                     @error('start_date')
                       <span class="alert alert-danger">{{$message}}</span>
                     @enderror
                     <div class="col-12">
                         <label class="form-label">End Date</label>
-                        <input type="date" name="end_date" class="form-control">
+                        <input type="date" value="{{ $property->end_date->format('Y-m-d') }}" name="end_date" class="form-control">
                     </div>
                     @error('end_date')
                       <span class="alert alert-danger">{{$message}}</span>
                     @enderror
-                 {{--    <div class="col-12">
-                      <label class="form-label">Gallery Images</label>
-                      <span class="text-danger">*</span>
-                      <input type="file" name="image" class="form-control">
-                  </div> --}}
                      <div class="col-12">
                         <label class="form-label">Price</label>
                           <span class="text-danger">*</span>
-                          <input type="number" name="price" class="form-control">
+                          <input type="number" value="{{$property->price}}" name="price" class="form-control">
                       </div>
                       @error('price')
                         <span class="alert alert-danger">{{$message}}</span>
                       @enderror
-                          
+                      @if (Auth::user()->role === 'admin')
+                        <div class="col-12">
+                          <label class="form-label">Status</label>
+                          <span class="text-danger">*</span>
+                          <select name="status" class="form-select mb-3" aria-label="Select Status">
+                            <option value="{{$property->status}}">{{ucwords($property->status)}}</option>
+                            <option value="{{App\Constants\Status::DRAFT}}">Darft</option>
+                            <option value="{{App\Constants\Status::PUBLISH}}">Publish</option>
+                          </select>
+                          </div>
+                          @endif
                           <div class="col-12">
                               <div class="d-grid">
-                              <button type="submit" class="btn btn-primary">Add Retal</button>
+                              <button type="submit" class="btn btn-primary">Update Retal</button>
                               </div>
                           </div>
                           </form>
-                      </div>
-                      </div>
+                        </div>
+                    </div>
+                  
                       </div>
         </div>
       </div>
@@ -137,7 +150,22 @@
       ],
     });
   </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const inputElement = document.getElementById('avatar');
+    const imagePreview = document.getElementById('image-preview');
+    inputElement.addEventListener('change', function (e) {
+        if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imagePreview.src = e.target.result;
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    });
+});
 
+</script>
 @endpush
     
 

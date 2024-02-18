@@ -18,4 +18,8 @@ class Category extends Model
             $category->slug = Str::slug($category->title);
         });
     }
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+    }
 }

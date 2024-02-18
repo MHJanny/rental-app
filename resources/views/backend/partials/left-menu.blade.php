@@ -22,7 +22,7 @@
           <ul>
             <li> <a href="{{route('property.create')}}"><i class="bi bi-circle"></i>Add Rental</a>
             </li>
-            <li> <a href="rentals.html"><i class="bi bi-circle"></i>All Rentals</a>
+            <li> <a href="{{route('property.index')}}"><i class="bi bi-circle"></i>All Rentals</a>
             </li>
 
   

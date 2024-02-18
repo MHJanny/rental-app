@@ -33,7 +33,6 @@ Route::get('/dashboard', function () {
     return view('backend.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::post('/upload', [UploadController::class,'store']);
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('add-category',[CategoryController::class, 'create'])->name('category.create');
     Route::post('add-category',[CategoryController::class, 'store'])->name('category.store');
@@ -45,6 +44,10 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('add-property', [PropertyController::class, 'create'])->name('property.create');
     Route::post('add-property', [PropertyController::class,'store'])->name('property.store');
+    Route::get('properties', [PropertyController::class, 'index'])->name('property.index');
+    Route::get('edit-property/{uuid}', [PropertyController::class,'edit'])->name('property.edit');
+    Route::patch('edit-property/{uuid}', [PropertyController::class, 'update'])->name('property.update');
+    Route::post('delete-property/{uuid}', [PropertyController::class, 'destroy'])->name('property.delete');
 });
 
 Route::middleware('auth')->group(function () {
