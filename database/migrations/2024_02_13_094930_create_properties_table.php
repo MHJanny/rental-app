@@ -1,5 +1,6 @@
 <?php
 
+use App\Constants\Status;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -23,7 +24,7 @@ return new class extends Migration
             $table->string('end_date');
             $table->string('gallery_id')->nullable();
             $table->bigInteger('price');
-            $table->enum('status', ['draft','published'])->default('draft');
+            $table->string('status')->nullable()->default(Status::DRAFT);
             $table->timestamps();
             $table->softDeletes();
         });
