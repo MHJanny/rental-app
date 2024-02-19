@@ -20,7 +20,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->randomElement(['Hotel', 'Guesthouse', 'Booking']),
+            'title' => $this->faker->randomElement(['Hotel', 'Guesthouse', 'Apartment']),
             'description' => $this->faker->paragraph,
             'slug' => Str::slug($this->faker->unique()->sentence),
         ];

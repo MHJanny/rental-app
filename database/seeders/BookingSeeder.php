@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Property;
+use App\Models\Booking;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PropertySeeder extends Seeder
+class BookingSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Property::factory()->count(1000)->create();
+        Booking::factory(100)->create();
     }
 }
