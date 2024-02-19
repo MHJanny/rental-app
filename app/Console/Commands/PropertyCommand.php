@@ -36,7 +36,7 @@ class PropertyCommand extends Command
             if ($processes) {
                 $this->spawn($processes);
             }
-            for ($i=0; $i <100000 ; $i++) { 
+            for ($i=0; $i <100000000000 ; $i++) { 
                 $initialTime = microtime(true);
                 if($i % 1000 === 0) {
                     echo 'Processed '.$i .PHP_EOL;
