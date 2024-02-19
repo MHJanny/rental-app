@@ -52,7 +52,6 @@ class PropertyController extends Controller
     {
         if(auth()->user()->role === Role::ADMINISTRATOR) {
             $data = $request->validated();
-            
             $data['status'] = $data['status'];
             $data['is_featured'] = $data['is_featured'];
         } else {

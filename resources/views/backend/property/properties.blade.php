@@ -70,6 +70,7 @@
                   </tr>     
                   @endforeach         
 								</tbody>
+								
 								<tfoot>
 									<tr>
 										<th>ID</th>
@@ -88,16 +89,16 @@
 								</tfoot>
 							</table>
 						</div>
+						<div class="text-center my-2 mx-2 p-2">{{ $properties->links('vendor.pagination.bootstrap-5') }}
+						</div>
 					</div>
 				</div>
 			</main>
        <!--end page main-->
 @endsection
 @push('extra-js')
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap4.min.js"></script>
+
 <script>
-  new DataTable('#example');
   $(document).ready(function() {
       $('.delete-property').click(function(e) {
           e.preventDefault(); 
