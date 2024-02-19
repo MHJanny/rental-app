@@ -32,6 +32,7 @@ class PropertyUpdateRequest extends FormRequest
         ];
         if (auth()->user()->role === Role::ADMINISTRATOR) {
             $rules['status'] = ['required'];
+            $rules['is_featured'] = ['required'];
         }
         return $rules;
     }

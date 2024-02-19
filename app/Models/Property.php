@@ -14,14 +14,15 @@ class Property extends Model implements HasMedia
     protected $fillable = ['title','uuid','slug','description',
                             'category_id','user_id','address',
                             'start_date','end_date', 'gallery_id',
-                            'price','status'];
+                            'price','status','is_featured'];
 
     protected $casts = [
-        'gallery_id' => 'array',
-        'price' => 'float',
-        'start_date' => 'datetime',
-        'end_date' => 'datetime',
-        'user_id' => 'integer',
+        'gallery_id'    => 'array',
+        'price'         => 'float',
+        'start_date'    => 'datetime',
+        'end_date'      => 'datetime',
+        'user_id'       => 'integer',
+        'is_featured'   => 'boolean',
     ];
     public function registerMediaCollections(): void
     {

@@ -10,18 +10,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PropertyRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PropertyUpdateRequest;
+use App\Services\PropertyServices\PropertyStoreService;
+use App\Services\PropertyServices\PropertyCreateService;
 
 class PropertyController extends Controller
 {
-    public function index()
+    public function index(PropertyCreateService $postCreateSerice)
     {
-        if(auth()->user()->role === Role::ADMINISTRATOR) {
-            $properties = Property::with('user')->get();
-        } else {
-            $properties = Property::where('user_id', auth()->user()->id)
-            ->whereNull('deleted_at')
-            ->get();
-        }
+        $properties = $postCreateSerice->create();
         return view('backend.property.properties', ['properties' => $properties]);
     }
 
@@ -32,17 +28,13 @@ class PropertyController extends Controller
         return view('backend.property.add-property',['categories' => $categories]);
     }
     
-    public function store(PropertyRequest $request)
+    public function store(PropertyStoreService $postCreateSerice, PropertyRequest $request)
     {
        
         $this->authorize('create', Property::class);
-        $data = $request->validated(); 
-        $data['user_id'] = auth()->user()->id;
-        if ($request->hasFile('image')) {
-            $property = Property::create($data);
-            $property->addMedia($request->file('image'))->toMediaCollection('property-images');
-        } else {
-            return redirect()->back()->with('property-error', 'No image uploaded.');
+        $property = $postCreateSerice->createProperty($request);
+        if ($property) {
+            return redirect()->back()->with('property-success', 'Property created successfully.');
         }
         return redirect()->back()->with('property-success', 'Property created successfully.');
    
@@ -60,7 +52,9 @@ class PropertyController extends Controller
     {
         if(auth()->user()->role === Role::ADMINISTRATOR) {
             $data = $request->validated();
+            
             $data['status'] = $data['status'];
+            $data['is_featured'] = $data['is_featured'];
         } else {
             $data = $request->validated();
         }
