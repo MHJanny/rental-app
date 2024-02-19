@@ -76,8 +76,12 @@
                           <label class="form-label">Feature Image</label>
                           <span class="text-danger">*</span>
                           <div class="text-center py-2"> 
+                            @if ($property->media->isNotEmpty())
                             <img id="image-preview" height="300" width="300" 
                             src="{{ $property->media[0]->getUrl() }}" alt="{{$property->media[0]->file_name}}">
+                            @else
+                            <img id="image-preview" src="" height="300" width="300">
+                            @endif
                           </div>
                           <input type="file" id="avatar" name="image" class="form-control file-pond">
                       </div>
@@ -117,6 +121,17 @@
                           </select>
                           </div>
                           @endif
+                          @if (Auth::user()->role === 'admin')
+                          <div class="col-12">
+                            <label class="form-label">IS Featured</label>
+                            <span class="text-danger">*</span>
+                            <select name="is_featured" class="form-select mb-3" aria-label="Select Status">
+                              <option value="{{$property->is_featured}}">{{ucwords($property->is_featured)}}</option>
+                              <option value="0">False</option>
+                              <option value="1">True</option>
+                            </select>
+                            </div>
+                            @endif
                           <div class="col-12">
                               <div class="d-grid">
                               <button type="submit" class="btn btn-primary">Update Retal</button>

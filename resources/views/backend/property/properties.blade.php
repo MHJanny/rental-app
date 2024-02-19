@@ -30,6 +30,9 @@
 										<th>ID</th>
 										<th>Title</th>
 										<th>Price</th>
+										@if (auth()->user()->role === 'admin')
+										<th>Is Featured</th>
+										@endif
 										<th>Address</th>
 										@if (auth()->user()->role === 'admin')
 										<th>User</th>
@@ -48,6 +51,9 @@
                     @endif
                     <td>{{$property->title}}</td>
                     <td>{{$property->price}}</td>
+					@if (auth()->user()->role === 'admin')
+                    <td>{{$property->is_featured}}</td>
+                    @endif
                     <td>{{$property->address}}</td>
                     @if (auth()->user()->role === 'admin')
                     <td>{{$property->user->name}}</td>
@@ -69,6 +75,9 @@
 										<th>ID</th>
 										<th>Title</th>
 										<th>Price</th>
+										@if (auth()->user()->role === 'admin')
+										<th>Is Featured</th>
+										@endif
 										<th>Address</th>
                     					@if (auth()->user()->role === 'admin')
 										<th>User</th>

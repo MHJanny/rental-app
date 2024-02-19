@@ -10,4 +10,11 @@
 <li>@yeild('page-content')</li>
 </ul>
 <span>Backend master layout hold all css and footer section only. rest content goes to @section('page-content') section</span>
-![Screenshot](screenshot/1.jpg)
+## Usage/Examples
+For dummy data
+run 
+php artisan db:seed
+this command generate 3 category and 50 user
+then 
+php artisan app:seed
+this command will generate 100000 property

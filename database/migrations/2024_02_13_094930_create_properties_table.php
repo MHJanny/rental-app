@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('gallery_id')->nullable();
             $table->bigInteger('price');
             $table->string('status')->nullable()->default(Status::DRAFT);
+            $table->boolean('is_featured')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

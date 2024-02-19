@@ -22,11 +22,10 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123456'),
             'role'  => Role::ADMINISTRATOR,
         ]);
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory(50)->create();
+        $this->call([
+            CategorySeeder::class,
+        ]);
+       
     }
 }
