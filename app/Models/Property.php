@@ -7,14 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+
 class Property extends Model implements HasMedia
 {
-    use HasFactory,InteractsWithMedia;
+    use HasFactory, InteractsWithMedia;
 
-    protected $fillable = ['title','uuid','slug','description',
-                            'category_id','user_id','address',
-                            'start_date','end_date', 'gallery_id',
-                            'price','status','is_featured'];
+    protected $fillable = [
+        'title', 'uuid', 'slug', 'description',
+        'category_id', 'user_id', 'address',
+        'start_date', 'end_date', 'gallery_id',
+        'price', 'status', 'is_featured'
+    ];
 
     protected $casts = [
         'gallery_id'    => 'array',
@@ -43,5 +46,10 @@ class Property extends Model implements HasMedia
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Constants\Role;
 use App\Models\Category;
 use App\Models\Property;
 use App\Constants\Status;
@@ -31,7 +32,7 @@ class PropertyFactory extends Factory
             'slug' => $this->faker->slug,
             'description' => $this->faker->paragraph,
             'category_id' => Category::pluck('id')->random(),
-            'user_id' => User::pluck('id')->random(),
+            'user_id' => User::whereNotIn('role', [Role::ADMINISTRATOR, Role::USER])->pluck('id')->random(),
             'address' => $this->faker->address,
             'start_date' => $this->faker->date,
             'end_date' => $this->faker->date,
