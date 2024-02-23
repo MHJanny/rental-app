@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Constants\Role;
 use App\Models\Booking;
+use App\Models\Property;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -19,6 +20,12 @@ class BookingController extends Controller
         }
 
         return view('backend.bookings.index', compact('bookings'));
+    }
+    public function create($uuid)
+    {
+        $this->authorize('create', Booking::class);
+        $property = Property::with('media')->where('uuid', $uuid)->firstOrFail();
+        return view('frontend.checkout', ['property' => $property]);
     }
 
     public function edit(Booking $booking)

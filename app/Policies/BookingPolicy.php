@@ -30,7 +30,7 @@ class BookingPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role === Role::USER;
+        return $user->role === Role::USER|| Role::ADMINISTRATOR;
     }
 
     /**

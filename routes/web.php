@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\Frontend\FrontPageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ProfileController;
@@ -18,17 +19,12 @@ use App\Http\Controllers\Property\PropertyController;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
-
+Route::get('/', [FrontPageController::class,'index'])->name('home');
+Route::get('property/{uuid}', [PropertyController::class,'show'])->name('property.show');
 Route::get('/rentals', function () {
     return view('frontend.rental-list');
 });
 
-Route::get('/rentals/{id}', function () {
-    return view('frontend.single-rental');
-});
 
 Route::get('/dashboard', function () {
     return view('backend.index');
@@ -49,11 +45,18 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('edit-property/{uuid}', [PropertyController::class, 'edit'])->name('property.edit');
     Route::patch('edit-property/{uuid}', [PropertyController::class, 'update'])->name('property.update');
     Route::post('delete-property/{uuid}', [PropertyController::class, 'destroy'])->name('property.delete');
+});
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('bookings/{uuid}', [BookingController::class, 'create'])->name('booking.create');
+});
+Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');
     Route::patch('bookings/{booking}', [BookingController::class, 'update'])->name('bookings.update');
     Route::delete('bookings/{booking}', [BookingController::class, 'destroy'])->name('bookings.destroy');
 });
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
