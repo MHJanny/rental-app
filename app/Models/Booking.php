@@ -9,11 +9,10 @@ class Booking extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['property_id', 'user_id', 'check_in', 'check_out', 'status'];
+    protected $fillable = ['property_id', 'user_id', 'billing_address', 'amount', 'status'];
 
     protected $casts = [
-        'check_in' => 'date',
-        'check_out' => 'date',
+       
     ];
 
     public function property()

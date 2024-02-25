@@ -1,12 +1,16 @@
 <?php
 
-use App\Http\Controllers\BookingController;
-use App\Http\Controllers\Frontend\FrontPageController;
+use Illuminate\Http\Request;
+use App\Livewire\CheckoutForm;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\BookingController;
+
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Property\CategoryController;
 use App\Http\Controllers\Property\PropertyController;
+use App\Http\Controllers\Frontend\FrontPageController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +53,11 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('bookings/{uuid}', [BookingController::class, 'create'])->name('booking.create');
+    Route::post('bookings/{uuid}', [BookingController::class, 'store'])->name('booking.store');
+    Route::get('make-payment',[PaymentController::class,'create'])->name('payment');
+    Route::post('ssl-success', [PaymentController::class,'success'])->name('ssl-success');
+    Route::post('ssl-fail', [PaymentController::class,'fail'])->name('ssl-fail');
+    Route::post('ssl-cancel', [PaymentController::class, 'success'])->name('ssl-cancel');
 });
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');

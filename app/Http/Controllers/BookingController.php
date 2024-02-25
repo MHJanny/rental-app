@@ -28,6 +28,12 @@ class BookingController extends Controller
         return view('frontend.checkout', ['property' => $property]);
     }
 
+    public function store(Request $request)
+    {
+        $this->authorize('create', Booking::class);
+        dd($request->all());
+    }
+
     public function edit(Booking $booking)
     {
         // 

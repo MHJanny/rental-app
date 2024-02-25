@@ -1,9 +1,9 @@
 <?php
 
 use App\Constants\PaymentMethod;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -19,6 +19,7 @@ return new class extends Migration
             $table->bigInteger('amount')->nullable();
             $table->bigInteger('discount')->nullable();
             $table->string('payment_method')->default(PaymentMethod::CASH);
+            $table->json('billing_address');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });

@@ -8,6 +8,6 @@ class PaymentMethod
     const CHEQUE = "cheque";
     const BKASH = "bkash";
     const ROCKET = "rocket";
-    const GOPAY = "gopay";
-    const UPI = "upi";
+    const SSLCOMMERZ = "sslcommmerz";
+    const STRIPE = "stripe";
 }
