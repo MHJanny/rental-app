@@ -17,18 +17,6 @@
 
   <section class="vs-checkout-wrapper space">
     <div class="container">
-      <form action="#" class="woocommerce-form-coupon bg-smoke" style="display: block;">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Write your coupon code">
-            </div>
-            <div class="form-group">
-              <button type="submit" class="vs-btn style4">Apply coupon Code</button>
-            </div>
-          </div>
-        </div>
-      </form>
       <livewire:checkout-table :uuid="$property->uuid">
     </div>
   </section>

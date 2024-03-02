@@ -88,6 +88,20 @@
     </li>
     @endcan
 
+    @can('view-users')
+    <li>
+      <a href="javascript:;" class="has-arrow">
+        <div class="parent-icon"><i class="bi bi-grid-fill"></i>
+        </div>
+        <div class="menu-title">Cuppons</div>
+      </a>
+      <ul>
+        <li> <a href="{{route('cuppon.index')}}"><i class="bi bi-circle"></i>Cuppons</a>
+        </li>
+      </ul>
+    </li>
+    @endcan
+
   </ul>
   <!--end navigation-->
 </aside>

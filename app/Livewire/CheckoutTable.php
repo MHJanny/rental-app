@@ -2,15 +2,19 @@
 
 namespace App\Livewire;
 
+use Exeption;
+use App\Models\Cuppon;
 use App\Models\Booking;
-use Livewire\Component;
 
+use Livewire\Component;
 use App\Models\Property;
 use Livewire\Attributes\Rule;
-use Livewire\Attributes\Validate;
 
 class CheckoutTable extends Component
 {
+    #[Rule('string', as:'Cuppon Code')]
+    public $cuppon;
+    public $cupponValue;
     public $property;
     #[Rule(['required','integer'])] 
     public $propertyId;
@@ -47,6 +51,11 @@ class CheckoutTable extends Component
 
     public function save()
     {
+       
+        $this->propertyId = $this->property->id;
+        $this->userId = auth()->user()->id;
+        $this->title = $this->property->title;
+        $this->totalPrice = $this->price * $this->quantity;
         $this->validate();
         $billingAddress = [
             'firstName' => $this->firstName,
@@ -69,7 +78,7 @@ class CheckoutTable extends Component
             'property_id' => $this->propertyId,
             'user_id' => $this->userId,
             'billing_address' => json_encode($billingAddress),
-            'amount'    => $this->price * $this->quantity,
+            'amount'    => $this->price * $this->quantity - $this->cupponValue,
         ]);
         $this->reset(
             'firstName','lastName','company',
@@ -78,14 +87,29 @@ class CheckoutTable extends Component
         );
         redirect()->route('payment')->with(['booking' => $booking]);
     }
+
+    public function applyCuppon()
+    {
+        try{
+            $cupponValue = Cuppon::where('code', $this->cuppon)->select('amount')->first();
+            if(!$cupponValue) {
+                session()->flash('cuppon-not-found','Cuppon Not match');
+            }
+            if( $cupponValue->amount > $this->price ) {
+                return false;
+            }
+            $this->cupponValue = $cupponValue->amount; 
+        }catch(\Exception $e) {
+            throw $e->getMessage();
+        } finally {
+            $this->reset('cuppon');
+        }
+     
+    }
     public function mount($uuid)
     {
         $this->property = Property::with('media')->whereUuid($uuid)->firstOrFail();
-        $this->propertyId = $this->property->id;
-        $this->userId = auth()->user()->id;
-        $this->title = $this->property->title;
         $this->price = $this->property->price;
-        $this->totalPrice = $this->price * $this->quantity;
     }
     public function incrementQuantity()
     {

@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Forms;
 
-use App\Models\Booking;
-use Livewire\Component;
+use App\Livewire\Checkout;
+use Livewire\Form;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Validate;
 
-class CheckoutForm extends Component
+class CheckoutForm extends Form
 {
+    public Checkout $checkout;
+    
     #[Rule(['required','string'])] 
     public $firstName;
     #[Rule(['required','min:3'])] 
@@ -31,8 +33,4 @@ class CheckoutForm extends Component
     public $phone;
     #[Rule(['nullable','string'])]
     public $note;
-    public function render()
-    {
-        return view('livewire.checkout-form');
-    }
 }

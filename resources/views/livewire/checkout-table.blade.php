@@ -1,4 +1,6 @@
 <div>
+
+  
     <form class="woocommerce-checkout">
         <div class="row ">
           <div class="col-lg-6">
@@ -118,24 +120,33 @@
             </tbody>
             <tfoot class="checkout-ordertable">
               <tr class="cart-subtotal">
-                <th>Subtotal</th>
-                <td data-title="Subtotal" colspan="4"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>760</bdi></span></td>
-              </tr>
-              <tr class="woocommerce-shipping-totals shipping">
-                <th>Shipping</th>
-                <td data-title="Shipping" colspan="4">
-                  Enter your address to view shipping options.
-                </td>
+                <th>Cuppon</th>
+                <td data-title="Subtotal" colspan="4"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">@if($cupponValue) ৳</span>{{$cupponValue}}</bdi></span> @endif</td>
               </tr>
               <tr class="order-total">
                 <th>Total</th>
-                <td data-title="Total" colspan="4"><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>760</bdi></span></strong>
+                <td data-title="Total" colspan="4"><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">৳</span>{{$property->price * $quantity - $cupponValue}}</bdi></span></strong>
                 </td>
               </tr>
             </tfoot>
           </table>
         </div>
-    
+        <div class="mt-lg-3">
+              <div class="row">
+                @session('cuppon-not-found')
+                  <span class="alert alert-danger">{{$value}}</span>
+                @endsession
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <input wire:model.live='cuppon' type="text" class="form-control" placeholder="Write your coupon code">
+                  </div>
+                  <div class="form-group">
+                    <button wire:click='applyCuppon()' type="button" class="vs-btn style4">Apply coupon Code</button>
+                  </div>
+                </div>
+              </div>
+           
+        </div>
         <div class="mt-lg-3">
           <div class="woocommerce-checkout-payment">
               <div class="form-check">
@@ -160,6 +171,8 @@
               </div>
           </div>
       </div>
+
+
       
       </div>
     </form>
