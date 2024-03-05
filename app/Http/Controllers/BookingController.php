@@ -13,18 +13,20 @@ class BookingController extends Controller
     {
         if (auth()->user()->role == Role::USER) {
             $bookings = auth()->user()->bookings()->with('property')->paginate(20);
-        } else if (auth()->user()->role == Role::RENTOWNER) {
+        } elseif (auth()->user()->role == Role::RENTOWNER) {
             $bookings = Booking::whereIn('property_id', auth()->user()->properties->pluck('id'))->paginate(20);
-        } else if (auth()->user()->role == Role::ADMINISTRATOR) {
+        } elseif (auth()->user()->role == Role::ADMINISTRATOR) {
             $bookings = Booking::paginate(20);
         }
 
         return view('backend.bookings.index', compact('bookings'));
     }
+
     public function create($uuid)
     {
         $this->authorize('create', Booking::class);
         $property = Property::with('media')->where('uuid', $uuid)->firstOrFail();
+
         return view('frontend.checkout', ['property' => $property]);
     }
 
@@ -36,7 +38,7 @@ class BookingController extends Controller
 
     public function edit(Booking $booking)
     {
-        // 
+        //
     }
 
     public function update(Request $request, Booking $booking)
@@ -46,6 +48,7 @@ class BookingController extends Controller
 
         if (in_array($status, ['approved', 'rejected'])) {
             $booking->update(['status' => $status]);
+
             return response()->json(['success' => 'Booking updated successfully']);
         }
 
@@ -56,6 +59,7 @@ class BookingController extends Controller
     {
         $this->authorize('delete', $booking);
         $booking->delete();
+
         return response()->json(['success' => 'Booking deleted successfully']);
     }
 }

@@ -10,6 +10,7 @@ class PaymentOption extends Component
     {
         return view('livewire.payment-option');
     }
+
     public function save()
     {
         dd('hello');

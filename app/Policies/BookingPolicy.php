@@ -2,10 +2,9 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Constants\Role;
 use App\Models\Booking;
-use Illuminate\Auth\Access\Response;
+use App\Models\User;
 
 class BookingPolicy
 {
@@ -30,7 +29,7 @@ class BookingPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role === Role::USER|| Role::ADMINISTRATOR;
+        return $user->role === Role::USER || Role::ADMINISTRATOR;
     }
 
     /**
@@ -46,7 +45,7 @@ class BookingPolicy
      */
     public function delete(User $user, Booking $booking): bool
     {
-        return ($user->role === Role::ADMINISTRATOR || ($booking->status == 'pending' && $user->id === $booking->user->id));
+        return $user->role === Role::ADMINISTRATOR || ($booking->status == 'pending' && $user->id === $booking->user->id);
     }
 
     /**

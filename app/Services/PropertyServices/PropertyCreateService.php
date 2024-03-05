@@ -17,6 +17,6 @@ class PropertyCreateService
                 ->whereNull('deleted_at')
                 ->paginate(20);
         }
-        
+
     }
 }

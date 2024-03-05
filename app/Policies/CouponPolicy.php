@@ -2,12 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\User;
-use App\Models\Cuppon;
 use App\Constants\Role;
-use Illuminate\Auth\Access\Response;
+use App\Models\Coupon;
+use App\Models\User;
 
-class CupponPolicy
+class CouponPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -36,7 +35,7 @@ class CupponPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Cuppon $cuppon): bool
+    public function update(User $user, Coupon $coupon): bool
     {
         return false;
     }
@@ -44,7 +43,7 @@ class CupponPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Cuppon $cuppon): bool
+    public function delete(User $user, Coupon $coupon): bool
     {
         return false;
     }
@@ -52,7 +51,7 @@ class CupponPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Cuppon $cuppon): bool
+    public function restore(User $user, Coupon $coupon): bool
     {
         return false;
     }
@@ -60,7 +59,7 @@ class CupponPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Cuppon $cuppon): bool
+    public function forceDelete(User $user, Coupon $coupon): bool
     {
         return false;
     }

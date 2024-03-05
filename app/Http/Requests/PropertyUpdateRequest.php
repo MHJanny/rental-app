@@ -10,7 +10,6 @@ class PropertyUpdateRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-   
 
     /**
      * Get the validation rules that apply to the request.
@@ -19,7 +18,7 @@ class PropertyUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        $rules =  [
+        $rules = [
             'title' => ['required', 'string', 'min:1', 'max:255'],
             'description' => ['required', 'string', 'min:1'],
             'category_id' => ['required', 'string', 'min:-2147483648', 'max:2147483647'],
@@ -28,12 +27,13 @@ class PropertyUpdateRequest extends FormRequest
             'start_date' => ['required', 'string', 'min:1', 'max:255'],
             'end_date' => ['required', 'string', 'min:1', 'max:255'],
             'price' => ['required', 'integer', 'min:-9223372036854775808', 'max:9223372036854775807'],
-           
+
         ];
         if (auth()->user()->role === Role::ADMINISTRATOR) {
             $rules['status'] = ['required'];
             $rules['is_featured'] = ['required'];
         }
+
         return $rules;
     }
 }

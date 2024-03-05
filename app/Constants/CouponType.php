@@ -2,8 +2,9 @@
 
 namespace App\Constants;
 
-class CupponType 
+class CouponType
 {
     const PERCENTAGE = 'percentage';
+
     const FIXED = 'fixed';
 }

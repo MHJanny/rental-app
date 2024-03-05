@@ -1,16 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
-use App\Livewire\CheckoutForm;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UploadController;
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\Cuppon\CupponController;
+use App\Http\Controllers\Coupon\CouponController;
+use App\Http\Controllers\Frontend\FrontPageController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Property\CategoryController;
 use App\Http\Controllers\Property\PropertyController;
-use App\Http\Controllers\Frontend\FrontPageController;
-use App\Http\Controllers\PaymentController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +20,13 @@ use App\Http\Controllers\PaymentController;
 |
 */
 
-Route::get('/', [FrontPageController::class,'index'])->name('home');
+Route::get('/', [FrontPageController::class, 'index'])->name('home');
 //Single Property
-Route::get('property/{uuid}', [PropertyController::class,'show'])->name('property.show');
+Route::get('property/{uuid}', [PropertyController::class, 'show'])->name('property.show');
 Route::get('/dashboard', function () {
     return view('backend.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
-//Property Category CRUD 
+//Property Category CRUD
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('add-category', [CategoryController::class, 'create'])->name('category.create');
     Route::post('add-category', [CategoryController::class, 'store'])->name('category.store');
@@ -50,9 +47,9 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('bookings/{uuid}', [BookingController::class, 'create'])->name('booking.create');
     Route::post('bookings/{uuid}', [BookingController::class, 'store'])->name('booking.store');
-    Route::get('make-payment',[PaymentController::class,'create'])->name('payment');
-    Route::post('ssl-success', [PaymentController::class,'success'])->name('ssl-success');
-    Route::post('ssl-fail', [PaymentController::class,'fail'])->name('ssl-fail');
+    Route::get('make-payment', [PaymentController::class, 'create'])->name('payment');
+    Route::post('ssl-success', [PaymentController::class, 'success'])->name('ssl-success');
+    Route::post('ssl-fail', [PaymentController::class, 'fail'])->name('ssl-fail');
     Route::post('ssl-cancel', [PaymentController::class, 'success'])->name('ssl-cancel');
 });
 //Manage Booking in backend
@@ -61,9 +58,9 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::patch('bookings/{booking}', [BookingController::class, 'update'])->name('bookings.update');
     Route::delete('bookings/{booking}', [BookingController::class, 'destroy'])->name('bookings.destroy');
 });
-//Manage Cuppon in backend
+//Manage Coupon in backend
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
-    Route::get('cuppon',[CupponController::class,'index'])->name('cuppon.index');
+    Route::get('coupon', [CouponController::class, 'index'])->name('coupon.index');
 });
 
 Route::middleware('auth')->group(function () {
@@ -72,4 +69,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

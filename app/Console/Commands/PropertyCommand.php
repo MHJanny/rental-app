@@ -2,14 +2,14 @@
 
 namespace App\Console\Commands;
 
-use App\Models\User;
-use App\Models\Category;
 use App\Constants\Status;
+use App\Models\Category;
 use App\Models\Property;
-use Illuminate\Support\Str;
-use Illuminate\Process\Pool;
+use App\Models\User;
 use Illuminate\Console\Command;
+use Illuminate\Process\Pool;
 use Illuminate\Support\Facades\Process;
+use Illuminate\Support\Str;
 
 class PropertyCommand extends Command
 {
@@ -33,33 +33,33 @@ class PropertyCommand extends Command
     public function handle()
     {
         $processes = (int) $this->option('processes');
-            if ($processes) {
-                $this->spawn($processes);
+        if ($processes) {
+            $this->spawn($processes);
+        }
+        for ($i = 0; $i < 100000000000; $i++) {
+            $initialTime = microtime(true);
+            if ($i % 1000 === 0) {
+                echo 'Processed '.$i.PHP_EOL;
+                echo 'Required Time '.microtime(true) - $initialTime.PHP_EOL;
             }
-            for ($i=0; $i <100000000000 ; $i++) { 
-                $initialTime = microtime(true);
-                if($i % 1000 === 0) {
-                    echo 'Processed '.$i .PHP_EOL;
-                    echo 'Required Time '. microtime(true) - $initialTime .PHP_EOL;
-                  }
-                  $this->insert() ;
-            }
-         
-       
+            $this->insert();
+        }
+
     }
 
     public function spawn($processes)
     {
-        Process::pool(function(Pool $pool) use ($processes) {
-            for ($i=0; $i < $processes ; $i++) { 
-                echo 'Running process ' . $processes;
+        Process::pool(function (Pool $pool) use ($processes) {
+            for ($i = 0; $i < $processes; $i++) {
+                echo 'Running process '.$processes;
                 $pool->command('php artisan app:seed')->timeout(60 * 5);
             }
         })->start()->wait();
     }
-    protected function insert ()
+
+    protected function insert()
     {
-        Property::create( [
+        Property::create([
             'title' => fake()->sentence,
             'slug' => fake()->slug,
             'description' => fake()->paragraph,
@@ -72,7 +72,7 @@ class PropertyCommand extends Command
             'price' => fake()->randomNumber(4),
             'status' => Status::DRAFT,
             'is_featured' => fake()->boolean(30),
-            'uuid'  => Str::uuid(),
-        ]); 
+            'uuid' => Str::uuid(),
+        ]);
     }
 }

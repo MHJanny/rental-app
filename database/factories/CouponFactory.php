@@ -2,15 +2,15 @@
 
 namespace Database\Factories;
 
+use App\Constants\CouponType;
 use App\Models\Property;
-use Illuminate\Support\Str;
-use App\Constants\CupponType;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cuppon>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Coupon>
  */
-class CupponFactory extends Factory
+class CouponFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -22,9 +22,9 @@ class CupponFactory extends Factory
         return [
             'title' => fake()->sentence,
             'code' => Str::random(3),
-            'type'  => fake()->randomElement([CupponType::PERCENTAGE, CupponType::FIXED]),
+            'type' => fake()->randomElement([CouponType::PERCENTAGE, CouponType::FIXED]),
             'amount' => fake()->randomNumber(4),
-            'property_id'   => Property::pluck('id')->random(),
+            'property_id' => Property::pluck('id')->random(),
         ];
     }
 }

@@ -7,12 +7,12 @@ namespace App\Providers;
 use App\Models\Booking;
 use App\Models\Category;
 use App\Models\Property;
-use App\Policies\MenuPolicy;
 use App\Policies\BookingPolicy;
 use App\Policies\CategoryPolicy;
+use App\Policies\MenuPolicy;
 use App\Policies\PropertyPolicy;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {

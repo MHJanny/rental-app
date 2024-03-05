@@ -2,10 +2,9 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Constants\Role;
 use App\Models\category;
-use Illuminate\Auth\Access\Response;
+use App\Models\User;
 
 class CategoryPolicy
 {
@@ -20,7 +19,7 @@ class CategoryPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user) : bool
+    public function view(User $user): bool
     {
         return $user->role === Role::ADMINISTRATOR;
     }
@@ -28,7 +27,7 @@ class CategoryPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user) : bool
+    public function create(User $user): bool
     {
         return $user->role === Role::ADMINISTRATOR;
     }
@@ -36,7 +35,7 @@ class CategoryPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user) :bool
+    public function update(User $user): bool
     {
         return $user->role === Role::ADMINISTRATOR;
     }
@@ -48,7 +47,6 @@ class CategoryPolicy
     {
         return $user->role === Role::ADMINISTRATOR;
     }
-    
 
     /**
      * Determine whether the user can restore the model.

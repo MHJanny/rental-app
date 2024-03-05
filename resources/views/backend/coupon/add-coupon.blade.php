@@ -1,4 +1,4 @@
 @extends('backend.layout.app')
 @section('page-content')
-    Cuppon Page
+Coupon Page
 @endsection
