@@ -9,7 +9,6 @@ class CategoryRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-   
 
     /**
      * Get the validation rules that apply to the request.
@@ -20,7 +19,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'min:1', 'max:100'],
-            'description' => ['required','string', 'min:1'],
+            'description' => ['required', 'string', 'min:1'],
         ];
     }
 }

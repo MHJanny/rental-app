@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use App\Constants\Role;
+use App\Constants\Status;
 use App\Models\Category;
 use App\Models\Property;
-use App\Constants\Status;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PropertyFactory extends Factory
 {
@@ -40,7 +40,7 @@ class PropertyFactory extends Factory
             'price' => $this->faker->randomNumber(4),
             'status' => Status::DRAFT,
             'is_featured' => $this->faker->boolean(30),
-            'uuid'  => Str::uuid(),
+            'uuid' => Str::uuid(),
         ];
     }
 
@@ -54,7 +54,7 @@ class PropertyFactory extends Factory
         return $this->afterCreating(function (Property $property) {
             $files = Storage::files('public');
             $randomFile = $files[array_rand($files)];
-            $property->addMedia(storage_path('app/public' . $randomFile))
+            $property->addMedia(storage_path('app/public'.$randomFile))
                 ->toMediaCollection('property-images');
         });
     }

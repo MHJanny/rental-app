@@ -93,10 +93,10 @@
       <a href="javascript:;" class="has-arrow">
         <div class="parent-icon"><i class="bi bi-grid-fill"></i>
         </div>
-        <div class="menu-title">Cuppons</div>
+        <div class="menu-title">Coupons</div>
       </a>
       <ul>
-        <li> <a href="{{route('cuppon.index')}}"><i class="bi bi-circle"></i>Cuppons</a>
+        <li> <a href="{{route('coupon.index')}}"><i class="bi bi-circle"></i>Coupons</a>
         </li>
       </ul>
     </li>

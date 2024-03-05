@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Property;
 
-use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
-use Hamcrest\Core\IsNot;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -14,12 +12,15 @@ class CategoryController extends Controller
     {
         $this->authorize('view', Category::class);
         $categories = Category::whereNull('deleted_at')->get();
-        return view('backend.category.rent-category',['categories' => $categories]);
+
+        return view('backend.category.rent-category', ['categories' => $categories]);
     }
+
     public function store(CategoryRequest $request)
     {
         $this->authorize('create', Category::class);
         Category::create($request->validated());
+
         return redirect()->back()->with('category-added', 'Category Added Successfully');
     }
 
@@ -27,7 +28,8 @@ class CategoryController extends Controller
     {
         $this->authorize('update', Category::class);
         $category = Category::findOrFail($id);
-        return view('backend.category.edit-category',['category' => $category]);
+
+        return view('backend.category.edit-category', ['category' => $category]);
     }
 
     public function update(CategoryRequest $request, $id)
@@ -36,6 +38,7 @@ class CategoryController extends Controller
         $this->authorize('update', Category::class);
         $data = $request->validated();
         $category->update($data);
+
         return redirect()->back()->with('category-updated', 'Category Updated Successfully');
     }
 
@@ -44,7 +47,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $this->authorize('delete', $category);
         $category->delete();
+
         return redirect()->back()->with('category-deleted', 'Category Deleted Successfully');
     }
-    
 }

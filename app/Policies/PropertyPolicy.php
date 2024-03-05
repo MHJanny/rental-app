@@ -5,7 +5,6 @@ namespace App\Policies;
 use App\Constants\Role;
 use App\Models\Property;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class PropertyPolicy
 {
