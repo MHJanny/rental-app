@@ -20,7 +20,11 @@ class PropertyController extends Controller
         $properties = $postCreateSerice->create();
         return view('backend.property.properties', ['properties' => $properties]);
     }
-
+    public function show($uuid)
+    {
+        $property = Property::whereUuid($uuid)->firstOrFail();
+        return view('frontend.property-single', ['property' => $property]);
+    }
     public function create()
     {
         $this->authorize('create', Property::class);

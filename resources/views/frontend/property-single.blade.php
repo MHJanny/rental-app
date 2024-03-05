@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('frontend.layout.app')
 
 @section('page-content')
 
@@ -48,40 +48,30 @@
                         <div class="filter-active tour-booking-active">
                             <div class="filter-item tab-content1">
                                 <div class="info-image">
-                                    <img src="{{ asset('assets/img/tours/tour-information.jpg') }}" alt="tours-img">
+                                    @if ($property->media->isNotEmpty())
+                                        <img src="{{ $property->media[0]->getUrl() }}" alt="tours-img">
+                                    @else 
+                                    <img src="{{ asset('assets/images/property.jpg') }}">                                        
+                                    @endif
+
                                 </div>
                                 <div class="row justify-content-between align-items-center">
                                     <div class="col-md-6">
-                                        <h2 class="tab-title">Peek Mountain View</h2>
+                                        <h2 class="tab-title">{{$property->title}}</h2>
                                     </div>
                                     <div class="col-auto">
-                                        <p class="tour-price"><strong>$299</strong> / Per Person</p>
+                                        <p class="tour-price">৳ <strong>{{$property->price}}</strong></p>
                                     </div>
                                 </div>
-                                <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem ipsum
-                                    dolor sit amet,
-                                    consectetur adipiscing elit. Donec sollicitudin molestie porttitor lectus nibh.
-                                    Nulla quis lorem ut
-                                    libero malesuada feugiat malesuada. Nulla porttitor lectus nibh. Nulla quis lorem ut
-                                    libero
-                                    malesuada
-                                    feugiat porttitor accumsan tincidunt. Sed porttitor lectus nibh. Nulla quis lorem ut
-                                    libero
-                                    malesuada
-                                    feugiat. Nulla quis lorem ut libero malesuada feugiat. Curabitur porttitor lectus
-                                    nibh. Nulla quis
-                                    lorem ut libero malesuada feugiat aliquet quam id dui posuere blandit. Nulla quis
-                                    lorem ut libero
-                                    malesuada feugiat malesuada. Nulla porttitor lectus nibh.</p>
-
+                               
+                                {!! $property->description !!}
+                                <div class="filter-item tab-content1">
+                                    <a href="{{route('booking.create', ['uuid' => $property->uuid])}}" class="vs-btn style4">Book Now</a>
+                                </div>
                             </div>
                             <div class="filter-item tab-content3">
                                 <h2 class="tab-title">Location</h2>
-                                <p class="tab-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                                    commodo ligula
-                                    eget dolor. Aenean massa. Cum sociis Theme natoque penatibus et magnis dis
-                                    parturient montes,
-                                    nascetur ridiculus mus</p>
+                                <p class="tab-text">{{$property->address}}</p>
                                 <div class="google-map">
                                     <iframe
                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d327444.36007492756!2d8.306929323325667!3d50.12074543827437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bd096f477096c5%3A0x422435029b0c600!2sFrankfurt%2C%20Germany!5e0!3m2!1sen!2sbd!4v1695590486221!5m2!1sen!2sbd"

@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('frontend.layout.app')
 <!--==============================
       Hero Area Start 
     ==============================-->
@@ -102,36 +102,32 @@
       </div>
     </div>
     <div class="row vs-carousel" data-slide-show="4" data-arrows="false" data-lg-slide-show="3" data-md-slide-show="2" data-sm-slide-show="1">
+      @foreach ($featuredProperties as $featuredProperty)
       <div class="col-xl-3 col-lg-6 col-sm-6">
-        <div class="package-style1">
-          <div class="package-img">
-            <a href="/rentals/1"><img class="w-100" src="{{asset('assets/img/tours/tour-1-1.jpg')}}" alt="Package Image"></a>
+          <div class="package-style1">
+              <div class="package-img">
+                  @if ($featuredProperty->media->isNotEmpty())
+                      <a href="{{route('property.show',['uuid' => $featuredProperty->uuid])}}">
+                          <img class="w-100" src="{{ $featuredProperty->media[0]->getUrl() }}" alt="Package Image">
+                      </a>
+                  @else
+                      <a href="{{route('property.show',['uuid' => $featuredProperty->uuid])}}">
+                          <img class="w-100" src="{{ asset('assets/images/property.jpg') }}" alt="Default Image">
+                      </a>
+                  @endif
+              </div>
+              <div class="package-content">
+                  <h3 class="package-title"><a href="{{route('property.show',['uuid' => $featuredProperty->uuid])}}">{{ $featuredProperty->title }}</a></h3>
+                  <p class="package-text">{{ $featuredProperty->address }}</p>
+                  <div class="package-footer">
+                      <span class="package-price">৳ {{ $featuredProperty->price }}</span>
+                      <a href="{{route('property.show',['uuid' => $featuredProperty->uuid])}}" class="vs-btn style4">View Details</a>
+                  </div>
+              </div>
           </div>
-          <div class="package-content">
-            <h3 class="package-title"><a href="/rentals/1">Peek Mountain View</a></h3>
-            <p class="package-text">Las Vegas, Nevada</p>
-            <div class="package-footer">
-              <span class="package-price">$399</span>
-              <a href="/rentals/1" class="vs-btn style4">View Details</a>
-            </div>
-          </div>
-        </div>
       </div>
-      <div class="col-xl-3 col-lg-6 col-sm-6">
-        <div class="package-style1">
-          <div class="package-img">
-            <a href="/rentals/1"><img class="w-100" src="{{asset('assets/img/tours/tour-1-2.jpg')}}" alt="Package Image"></a>
-          </div>
-          <div class="package-content">
-            <h3 class="package-title"><a href="/rentals/1">Explore Our World</a></h3>
-            <p class="package-text">Las Vegas, Nevada</p>
-            <div class="package-footer">
-              <span class="package-price">$259</span>
-              <a href="/rentals/1" class="vs-btn style4">View Details</a>
-            </div>
-          </div>
-        </div>
-      </div>
+  @endforeach
+  
     </div>
     <div class="text-center pt-lg-2">
       <a href="/rentals" class="vs-btn">View More</a>
@@ -225,36 +221,31 @@
       </div>
     </div>
     <div class="row vs-carousel" data-slide-show="4" data-arrows="false" data-lg-slide-show="3" data-md-slide-show="2" data-sm-slide-show="1">
-      <div class="col-xl-3 col-lg-6 col-sm-6">
-        <div class="package-style1">
-          <div class="package-img">
-            <a href="/rentals/1"><img class="w-100" src="{{asset('assets/img/tours/tour-1-1.jpg')}}" alt="Package Image"></a>
-          </div>
-          <div class="package-content">
-            <h3 class="package-title"><a href="/rentals/1">Peek Mountain View</a></h3>
-            <p class="package-text">Las Vegas, Nevada</p>
-            <div class="package-footer">
-              <span class="package-price">$399</span>
-              <a href="/rentals/1" class="vs-btn style4">View Details</a>
+      @foreach ($latesProperties as $latesProperty)
+          <div class="col-xl-3 col-lg-6 col-sm-6">
+            <div class="package-style1">
+              <div class="package-img">
+                @if ($latesProperty->media->isNotEmpty())
+                    <a href="{{route('property.show',['uuid' => $latesProperty->uuid])}}">
+                        <img class="w-100" src="{{ $latesProperty->media[0]->getUrl() }}" alt="Package Image">
+                    </a>
+                @else
+                    <a href="{{route('property.show',['uuid' => $latesProperty->uuid])}}">
+                        <img class="w-100" src="{{ asset('assets/images/property.jpg') }}" alt="Default Image">
+                    </a>
+                @endif
+              </div>
+              <div class="package-content">
+                <h3 class="package-title"><a href="{{route('property.show',['uuid' => $latesProperty->uuid])}}">{{$latesProperty->title}}</a></h3>
+                <p class="package-text">{{$latesProperty->address}}</p>
+                <div class="package-footer">
+                  <span class="package-price">৳ {{$latesProperty->price}}</span>
+                  <a href="{{route('property.show',['uuid' => $latesProperty->uuid])}}" class="vs-btn style4">View Details</a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-sm-6">
-        <div class="package-style1">
-          <div class="package-img">
-            <a href="/rentals/1"><img class="w-100" src="{{asset('assets/img/tours/tour-1-2.jpg')}}" alt="Package Image"></a>
-          </div>
-          <div class="package-content">
-            <h3 class="package-title"><a href="/rentals/1">Explore Our World</a></h3>
-            <p class="package-text">Las Vegas, Nevada</p>
-            <div class="package-footer">
-              <span class="package-price">$259</span>
-              <a href="/rentals/1" class="vs-btn style4">View Details</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      @endforeach
     </div>
     <div class="text-center pt-lg-2">
       <a href="/rentals" class="vs-btn">View More</a>

@@ -3,26 +3,26 @@
 namespace App\Policies;
 
 use App\Models\User;
+use App\Models\Cuppon;
 use App\Constants\Role;
-use App\Models\Booking;
 use Illuminate\Auth\Access\Response;
 
-class BookingPolicy
+class CupponPolicy
 {
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        //
+        return false;
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Booking $booking): bool
+    public function view(User $user): bool
     {
-        //
+        return $user->role === Role::ADMINISTRATOR;
     }
 
     /**
@@ -30,38 +30,38 @@ class BookingPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role === Role::USER|| Role::ADMINISTRATOR;
+        return false;
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Booking $booking): bool
+    public function update(User $user, Cuppon $cuppon): bool
     {
-        return $user->id === $booking->property->user->id;
+        return false;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Booking $booking): bool
+    public function delete(User $user, Cuppon $cuppon): bool
     {
-        return ($user->role === Role::ADMINISTRATOR || ($booking->status == 'pending' && $user->id === $booking->user->id));
+        return false;
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Booking $booking): bool
+    public function restore(User $user, Cuppon $cuppon): bool
     {
-        //
+        return false;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Booking $booking): bool
+    public function forceDelete(User $user, Cuppon $cuppon): bool
     {
-        //
+        return false;
     }
 }

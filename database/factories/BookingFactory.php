@@ -4,7 +4,9 @@ namespace Database\Factories;
 
 use App\Models\User;
 use App\Constants\Role;
+use App\Models\Booking;
 use App\Models\Property;
+use App\Constants\Status;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -12,6 +14,12 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class BookingFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Booking::class;
     /**
      * Define the model's default state.
      *
@@ -22,9 +30,7 @@ class BookingFactory extends Factory
         return [
             'property_id' => Property::pluck('id')->random(),
             'user_id' => User::whereNotIn('role', [Role::ADMINISTRATOR, Role::RENTOWNER])->pluck('id')->random(),
-            'check_in' => $this->faker->date,
-            'check_out' => $this->faker->date,
-            'status' => $this->faker->randomElement(['pending', 'approved', 'rejected']),
+            'status' => $this->faker->randomElement([Status::PENDING, Status::APPROVED, Status::REJECTED]),
         ];
     }
 }

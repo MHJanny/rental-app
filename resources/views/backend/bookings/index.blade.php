@@ -1,6 +1,5 @@
 @extends('backend.layout.app')
 @push('extra-css')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap4.min.css">
 @endpush
 @section('page-content')
 <!--start content-->
@@ -35,8 +34,8 @@
                             @if(auth()->user()->role === 'owner' || auth()->user()->role === 'admin')
                             <th>User</th>
                             @endif
-                            <th>Check in</th>
-                            <th>Check out</th>
+                            <th>Amount</th>
+                            <th>Payment Method</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -52,8 +51,8 @@
                             @if(auth()->user()->role === 'owner' || auth()->user()->role === 'admin')
                             <td>{{$booking->user->name}}</td>
                             @endif
-                            <td>{{$booking->check_in->format('d M, Y')}}</td>
-                            <td>{{$booking->check_out->format('d M, Y')}}</td>
+                            <td>{{$booking->amount}}</td>
+                            <td>{{$booking->payment_method}}</td>
                             <td>{{$booking->status}}</td>
                             <td>
                                 @if(auth()->user()->role === 'owner' && $booking->status == 'pending')
